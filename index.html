@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moli Stur - Official Store</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b;
+            --text-white: #f8fafc;
+            --wa-green: #25d366;
+            --accent: #38bdf8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-weight: bold; font-size: 1.1rem; color: var(--primary); letter-spacing: 1px; }
+
+        .page { display: none; padding: 20px; padding-bottom: 100px; max-width: 500px; margin: 0 auto; animation: fadeIn 0.3s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* DASHBOARD STYLES */
+        .welcome-text { text-align: center; margin-bottom: 20px; font-weight: 700; font-size: 1.1rem; }
+        .video-container { width: 100%; border-radius: 15px; overflow: hidden; margin-bottom: 20px; border: 1px solid #334155; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+        
+        .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 25px; }
+        .social-item { display: flex; flex-direction: column; align-items: center; background: var(--card-bg); padding: 12px 5px; border-radius: 12px; text-decoration: none; color: white; font-size: 0.65rem; border: 1px solid #334155; transition: 0.2s; }
+        .social-item:active { transform: scale(0.9); }
+        
+        .section-title { margin: 25px 0 12px; font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        .grub-btn { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-radius: 14px; text-decoration: none; color: white; background: var(--card-bg); border: 1px solid #334155; margin-bottom: 12px; transition: 0.3s; }
+        .grub-btn:active { background: #334155; }
+        .grub-pp { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 12px; border: 2px solid var(--primary); }
+        .grub-info { display: flex; flex-direction: column; }
+        .grub-info .name { font-weight: bold; font-size: 0.85rem; }
+        .grub-info .desc { font-size: 0.7rem; color: #94a3b8; margin-top: 2px; }
+
+        /* LIST CARD STYLES */
+        .list-grid { display: flex; flex-direction: column; gap: 10px; }
+        .item-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #334155;
+        }
+        .item-info h4 { margin: 0; font-size: 0.9rem; color: var(--text-white); text-transform: capitalize; }
+        .item-info p { margin: 4px 0 0; font-size: 0.8rem; color: var(--accent); font-weight: bold; }
+        
+        .btn-beli {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        /* BOTTOM NAV */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--card-bg);
+            height: 75px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #334155;
+            z-index: 1000;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 0.7rem;
+            background: none; border: none;
+            cursor: pointer;
+            flex: 1;
+        }
+        .nav-item.active { color: var(--primary); }
+        .nav-item i { margin-bottom: 4px; width: 22px; height: 22px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MOLI STUR</div>
+        <i data-lucide="bell"></i>
+    </header>
+
+    <div id="home" class="page active">
+        <div class="welcome-text">Selamat Datang Di Toko Moli Stur</div>
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="https://f.top4top.io/m_36508bmtj5.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="social-grid">
+            <a href="https://wa.me/6285178137007" class="social-item"><i data-lucide="message-circle" style="color:var(--wa-green)"></i><span>WhatsApp</span></a>
+            <a href="https://www.instagram.com/ellowtryhard" class="social-item"><i data-lucide="instagram" style="color:#e1306c"></i><span>IG</span></a>
+            <a href="https://t.me/rapieecakep" class="social-item"><i data-lucide="send" style="color:#0088cc"></i><span>Telegram</span></a>
+            <a href="https://www.tiktok.com/@rapie.nnn" class="social-item"><i data-lucide="music-2"></i><span>TikTok</span></a>
+        </div>
+
+        <div class="section-title"><i data-lucide="users" size="16"></i> Grup Komunitas</div>
+        
+        <a href="https://chat.whatsapp.com/GPux1pxWpcm9ghnLUswwSW" class="grub-btn">
+            <div style="display:flex; align-items:center;">
+                <img src="https://f.top4top.io/p_3650qzam35.jpg" class="grub-pp" alt="Grup 1">
+                <div class="grub-info">
+                    <span class="name">𝙈𝙊𝙇𝙄 𝘼𝙋𝙋 𝙋𝙍𝙀𝙈 𝘼𝙈 𝟯𝙆 𝙋𝙍𝙄𝙑𝘼𝙏 𝟭 𝙏𝘼𝙃𝙐𝙉</span>
+                    <span class="desc">Grub Apps Premium</span>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" size="18"></i>
+        </a>
+
+        <a href="https://chat.whatsapp.com/H08wkKrlNQJ6FCeK5CH1hM" class="grub-btn">
+            <div style="display:flex; align-items:center;">
+                <img src="https://e.top4top.io/p_36503k2m03.jpg" class="grub-pp" alt="Grup 2">
+                <div class="grub-info">
+                    <span class="name">𝘿𝘿𝙆 𝙋𝙇𝙀𝙉𝙂𝙀𝙍 𝗩𝟮</span>
+                    <span class="desc">Grub Cc Dan War</span>
+                </div>
+            </div>
+            <i data-lucide="chevron-right" size="18"></i>
+        </a>
+    </div>
+
+    <div id="panel" class="page">
+        <h3 style="margin-top: 0;">Katalog Panel Pterodactyl</h3>
+        <div class="list-grid" id="list-panel"></div>
+    </div>
+
+    <div id="apps" class="page">
+        <h3 style="margin-top: 0;">𝘼𝙋𝙋𝙎 𝙋𝙍𝙀𝙈𝙄𝙐𝙈</h3>
+        <div class="list-grid" id="list-apps"></div>
+    </div>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="nav('home')"><i data-lucide="home"></i><span>Beranda</span></button>
+        <button class="nav-item" onclick="nav('panel')"><i data-lucide="server"></i><span>Panel</span></button>
+        <button class="nav-item" onclick="nav('apps')"><i data-lucide="shopping-bag"></i><span>Apps</span></button>
+    </nav>
+
+    <script>
+        const noWA = "6285178137007";
+
+        const dataPanel = [
+            { nama: "Panel RAM 1GB", harga: "Rp 1.000" },
+            { nama: "Panel RAM 2GB", harga: "Rp 2.000" },
+            { nama: "Panel RAM 3GB", harga: "Rp 3.000" },
+            { nama: "Panel RAM 4GB", harga: "Rp 4.000" },
+            { nama: "Panel RAM 5GB", harga: "Rp 5.000" },
+            { nama: "Panel RAM 6GB", harga: "Rp 6.000" },
+            { nama: "Panel RAM 7GB", harga: "Rp 7.000" },
+            { nama: "Panel RAM 8GB", harga: "Rp 8.000" },
+            { nama: "Panel RAM 9GB", harga: "Rp 9.000" },
+            { nama: "Panel RAM 10GB", harga: "Rp 10.000" },
+            { nama: "Panel UNLIMITED", harga: "Rp 11.000" },
+            { nama: "RESELLER PANEL", harga: "Rp 12.000" },
+            { nama: "ADMIN PANEL", harga: "Rp 15.000" }
+        ];
+
+        const appsList = [
+            "am", "antrian sl", "app mus", "bot whatsapp", "bstation", "bulk", "camscanner", "canva", 
+            "canva head", "capcut", "cara garansi", "chatgpt", "crunchyroll", "fizzo", 
+            "format app", "format canva", "format garansi", "format garansi canva", 
+            "format garansi netflix", "format garansi spo", "format hh", "format renew canva", 
+            "format sl", "gagaolala", "gemini", "grammarly", "hbo", "hh", "household", 
+            "ibis paint", "iqiyi", "jaseb", "kebsos wa", "lightroom", "loklok", "mangotv", 
+            "meitu", "melolo", "microsoft", "oldroll", "pay", "penjelasan canva", 
+            "penjelasan netflix", "perbedaan yt", "perplexity", "photoroom", "picsart", 
+            "prime", "rc", "remini", "spotify", "starlight", "vidio", "viki", "viu", 
+            "vpn", "vsco", "wattpad", "web kebsos", "wetv", "wibuku", "wink", "youku", 
+            "youtube", "zoom"
+        ];
+
+        function renderItems(data, elementId) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = data.map(p => `
+                <div class="item-card">
+                    <div class="item-info"><h4>${p.nama}</h4><p>${p.harga}</p></div>
+                    <button class="btn-beli" onclick="beli('${p.nama}', '${p.harga}')">Beli</button>
+                </div>
+            `).join('');
+        }
+
+        function renderApps() {
+            const container = document.getElementById('list-apps');
+            container.innerHTML = appsList.map(app => `
+                <div class="item-card">
+                    <div class="item-info">
+                        <h4>${app}</h4>
+                        <p>Premium Service</p>
+                    </div>
+                    <button class="btn-beli" onclick="beli('${app}', 'Harga Cek Admin')">Pesan</button>
+                </div>
+            `).join('');
+        }
+
+        function nav(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            const buttons = document.querySelectorAll('.nav-item');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(pageId)) {
+                    btn.classList.add('active');
+                }
+            });
+            window.scrollTo(0,0);
+        }
+
+        function beli(nama, harga) {
+            const pesan = encodeURIComponent(`Halo Admin Moli,\n\nSaya ingin order produk ini:\n📦 Nama: *${nama.toUpperCase()}*\n💰 Harga: *${harga}*\n\nMohon petunjuk pembayarannya.`);
+            window.open(`https://wa.me/${noWA}?text=${pesan}`, '_blank');
+        }
+
+        lucide.createIcons();
+        renderItems(dataPanel, 'list-panel');
+        renderApps();
+    </script>
+</body>
+</html>
